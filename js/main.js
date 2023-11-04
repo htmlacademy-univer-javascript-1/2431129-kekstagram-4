@@ -1,5 +1,11 @@
-const getRandInt = (intFrom, intTo) =>
-  Math.round(intFrom - 0.5 + Math.random(intFrom, intTo) * (1 + intTo - intFrom));
+const UPPER_BOUND_OBJ = 25;
+const LOWER_BOUND_OBJ = 1;
+const UPPER_BOUND_LIKES = 200;
+const LOWER_BOUND_LIKES = 15;
+const UPPER_BOUND_IMG = 6;
+const LOWER_BOUND_IMG = 1;
+const MAX_OF_COMMENTS = 30;
+const MAX_OF_PHOTOS = 25;
 
 const MESSAGES = [
   'Всё отлично!',
@@ -15,38 +21,45 @@ const NAMES = [
   'Дмитрий'
 ];
 
-const generateArray = (length, max) => (
-  [...new Array(length)].map(() => Math.round(Math.random() * max)));
+const DESCRIPTIONS = ['Фото', 'Мой новый дом', 'Фотки с путешествия'];
 
-const photosId = generateArray(25,25);
-const usersId = generateArray(25,25);
+const getRandInt = (a, b) => {
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+};
 
 const getId = () => {
-  const temp = usersId[getRandInt(0,usersId.length-1)];
-
-  delete(usersId[getRandInt(0,usersId.length-1)]);
-  return temp;
+  let lastGeneratedId = 0;
+  return function () {
+    lastGeneratedId += 1;
+    return lastGeneratedId;
+  };
 };
 
-const getPhotoId = () => {
-  const temp = photosId[getRandInt(0,photosId.length-1)];
+const getIdComments = getId();
+const getIdPhotos = getId();
 
-  delete(photosId[getRandInt(0,photosId.length-1)]);
-  return temp;
+const getRandArrElem = (elements) => elements[getRandInt(0, elements.length - 1)];
+
+const createComment = () => ({
+  id: getIdComments(),
+  avatar: `img/avatar-${getRandInt(LOWER_BOUND_IMG, UPPER_BOUND_IMG)}.svg`,
+  message: getRandArrElem(MESSAGES),
+  name:`${getRandArrElem(NAMES) }`
+});
+
+const arrOfComments = Array.from({length: MAX_OF_COMMENTS}, createComment);
+
+const createPhotoDescription = {
+  id: getIdPhotos(),
+  url: `photos/${getRandInt(LOWER_BOUND_OBJ, UPPER_BOUND_OBJ)}.jpg`,
+  description: getRandArrElem(DESCRIPTIONS),
+  likes: `Количество лайков: ${getRandInt(LOWER_BOUND_LIKES, UPPER_BOUND_LIKES)}`,
+  comments: getRandArrElem(arrOfComments)
 };
 
-// eslint-disable-next-line no-unused-vars
-const comment = {
-  id: getId(),
-  avatar: `img/avatar-${ getRandInt(0, 5) }.svg`,
-  message: MESSAGES[getRandInt(0, 1)],
-  name: NAMES[getRandInt(0,NAMES.length-1)]
-};
-// eslint-disable-next-line no-unused-vars
-const photo = {
-  id: getPhotoId(),
-  url: `photos/${getPhotoId()}.jpg`,
-  description: 'Описание фотографии',
-  likes: `Количество лайков: ${getRandInt(15, 200)}`,
-  comments: MESSAGES[getRandInt(0, 1)]
-};
+const arrOfPhotoDescriptions = () =>  Array.from({length: MAX_OF_PHOTOS}, createPhotoDescription);
+
+arrOfPhotoDescriptions();
