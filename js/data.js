@@ -32,7 +32,7 @@ const createComment = () => ({
   id: getIdComments(),
   avatar: `img/avatar-${getRandInt(LOWER_BOUND_IMG, UPPER_BOUND_IMG)}.svg`,
   message: getRandArrElem(MESSAGES),
-  name:`${getRandArrElem(NAMES) }`
+  name: getRandArrElem(NAMES)
 });
 
 const arrOfComments = Array.from({length: MAX_OF_COMMENTS}, createComment);
@@ -41,7 +41,7 @@ const createPhotoDescription = () => ({
   id: getIdPhotos(),
   url: `photos/${getRandInt(LOWER_BOUND_OBJ, UPPER_BOUND_OBJ)}.jpg`,
   description: getRandArrElem(DESCRIPTIONS),
-  likes: `Количество лайков: ${getRandInt(LOWER_BOUND_LIKES, UPPER_BOUND_LIKES)}`,
+  likes: getRandInt(LOWER_BOUND_LIKES, UPPER_BOUND_LIKES),
   comments: getRandArrElem(arrOfComments)
 });
 
