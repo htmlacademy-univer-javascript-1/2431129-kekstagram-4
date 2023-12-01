@@ -35,14 +35,16 @@ const createComment = () => ({
   name:`${getRandArrElem(NAMES) }`
 });
 
+const arrOfComments = Array.from({length: MAX_OF_COMMENTS}, createComment);
+
 const createPhotoDescription = () => ({
   id: getIdPhotos(),
   url: `photos/${getRandInt(LOWER_BOUND_OBJ, UPPER_BOUND_OBJ)}.jpg`,
   description: getRandArrElem(DESCRIPTIONS),
   likes: getRandInt(LOWER_BOUND_LIKES, UPPER_BOUND_LIKES),
-  comments: getRandArrElem(Array.from({length: MAX_OF_COMMENTS}, createComment))
+  comments: getRandArrElem(arrOfComments)
 });
 
-const arrOfPhotoDescriptions = () =>  Array.from({length: MAX_OF_PHOTOS}, () => createPhotoDescription);
+const arrOfPhotoDescriptions = () =>  Array.from({length: MAX_OF_PHOTOS}, createPhotoDescription);
 
 export {arrOfPhotoDescriptions};
