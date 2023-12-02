@@ -1,3 +1,4 @@
 import { arrOfPhotoDescriptions } from './data.js';
+import { renderPictures } from './render_picture.js';
 
-arrOfPhotoDescriptions();
+renderPictures(arrOfPhotoDescriptions());
