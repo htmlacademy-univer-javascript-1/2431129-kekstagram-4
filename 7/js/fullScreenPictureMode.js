@@ -5,7 +5,7 @@ const body = document.body;
 const closeButton = fullScreenPicture.querySelector('#picture-cancel');
 
 const printComments = (comments) => {
-  const commentsContainer = fullScreenPicture.querySelector('.social_comments');
+  const commentsContainer = fullScreenPicture.querySelector('.social__comments');
   const commentTemplate = fullScreenPicture.querySelector('.social__comment');
   const fragment = document.createDocumentFragment();
 
@@ -17,6 +17,7 @@ const printComments = (comments) => {
     clonedComment.querySelector('.social__text').textContent = message;
     fragment.append(clonedComment);
   });
+  commentsContainer.innerHTML = '';
   commentsContainer.append(fragment);
 };
 
