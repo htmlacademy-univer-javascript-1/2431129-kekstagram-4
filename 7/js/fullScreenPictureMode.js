@@ -17,7 +17,6 @@ const printComments = (comments) => {
     clonedComment.querySelector('.social__text').textContent = message;
     fragment.append(clonedComment);
   });
-  commentsContainer.innerHTML = '';
   commentsContainer.append(fragment);
 };
 
