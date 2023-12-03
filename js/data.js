@@ -35,8 +35,6 @@ const createComment = () => ({
   name: getRandArrElem(NAMES)
 });
 
-//const arrOfComments = Array.from({length: getRandInt(0, MAX_OF_COMMENTS)}, createComment);
-
 const createPhotoDescription = () => ({
   id: getIdPhotos(),
   url: `photos/${getRandInt(LOWER_BOUND_OBJ, UPPER_BOUND_OBJ)}.jpg`,
