@@ -11,7 +11,11 @@ const MAX_OF_PHOTOS = 25;
 
 const MESSAGES = [
   'Всё отлично!',
-  'В целом всё неплохо. Но не всё.'
+  'В целом всё неплохо. Но не всё.',
+  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
+  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
+  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
 const NAMES = [
@@ -40,7 +44,7 @@ const createPhotoDescription = () => ({
   url: `photos/${getRandInt(LOWER_BOUND_OBJ, UPPER_BOUND_OBJ)}.jpg`,
   description: getRandArrElem(DESCRIPTIONS),
   likes: getRandInt(LOWER_BOUND_LIKES, UPPER_BOUND_LIKES),
-  comments: Array.from({length: getRandInt(0, MAX_OF_COMMENTS)}, createComment)
+  comments: Array.from({length: getRandInt(1, MAX_OF_COMMENTS)}, createComment)
 });
 
 const arrOfPhotoDescriptions = () =>  Array.from({length: MAX_OF_PHOTOS}, createPhotoDescription);
