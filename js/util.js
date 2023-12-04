@@ -15,4 +15,6 @@ const getId = () => {
   };
 };
 
-export {getRandInt, getRandArrElem, getId};
+const EscKeyCheck = (event) => event.key === 'Escape';
+
+export {getRandInt, getRandArrElem, getId, EscKeyCheck};
