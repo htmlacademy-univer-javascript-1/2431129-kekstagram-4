@@ -6,6 +6,7 @@ const UPPER_BOUND_LIKES = 200;
 const LOWER_BOUND_LIKES = 15;
 const UPPER_BOUND_IMG = 6;
 const LOWER_BOUND_IMG = 1;
+const MIN_OF_COMMENTS = 0;
 const MAX_OF_COMMENTS = 30;
 const MAX_OF_PHOTOS = 25;
 
@@ -44,7 +45,7 @@ const createPhotoDescription = () => ({
   url: `photos/${getRandInt(LOWER_BOUND_OBJ, UPPER_BOUND_OBJ)}.jpg`,
   description: getRandArrElem(DESCRIPTIONS),
   likes: getRandInt(LOWER_BOUND_LIKES, UPPER_BOUND_LIKES),
-  comments: Array.from({length: getRandInt(1, MAX_OF_COMMENTS)}, createComment)
+  comments: Array.from({length: getRandInt(MIN_OF_COMMENTS, MAX_OF_COMMENTS)}, createComment)
 });
 
 const arrOfPhotoDescriptions = () =>  Array.from({length: MAX_OF_PHOTOS}, createPhotoDescription);

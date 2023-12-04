@@ -9,14 +9,16 @@ const printComments = (comments) => {
   const commentTemplate = fullScreenPicture.querySelector('.social__comment');
   const fragment = document.createDocumentFragment();
 
-  comments.forEach((comment) => {
-    const clonedComment = commentTemplate.cloneNode(true);
-    const {avatar, name, message} = comment;
-    clonedComment.querySelector('.social__picture').src = avatar;
-    clonedComment.querySelector('.social__picture').alt = name;
-    clonedComment.querySelector('.social__text').textContent = message;
-    fragment.append(clonedComment);
-  });
+  if (commentTemplate !== null){
+    comments.forEach((comment) => {
+      const clonedComment = commentTemplate.cloneNode(true);
+      const {avatar, name, message} = comment;
+      clonedComment.querySelector('.social__picture').src = avatar;
+      clonedComment.querySelector('.social__picture').alt = name;
+      clonedComment.querySelector('.social__text').textContent = message;
+      fragment.append(clonedComment);
+    });
+  }
   commentsContainer.innerHTML = '';
   commentsContainer.append(fragment);
 };
