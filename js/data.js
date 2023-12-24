@@ -1,4 +1,4 @@
-import { getRandInt, getRandArrElem, getId } from './util.js';
+import { getRandInt, getRandArrElem } from './util.js';
 
 const UPPER_BOUND_OBJ = 25;
 const LOWER_BOUND_OBJ = 1;
@@ -30,6 +30,11 @@ const NAMES = [
 
 const DESCRIPTIONS = ['Фото', 'Мой новый дом', 'Фотки с путешествия'];
 
+const getId = () => {
+  let currentId = 0;
+  return () => ++currentId;
+};
+
 const getIdComments = getId();
 const getIdPhotos = getId();
 
@@ -45,9 +50,9 @@ const createPhotoDescription = () => ({
   url: `photos/${getRandInt(LOWER_BOUND_OBJ, UPPER_BOUND_OBJ)}.jpg`,
   description: getRandArrElem(DESCRIPTIONS),
   likes: getRandInt(LOWER_BOUND_LIKES, UPPER_BOUND_LIKES),
-  comments: Array.from({length: getRandInt(MIN_OF_COMMENTS, MAX_OF_COMMENTS)}, createComment)
+  comments: Array.from({length: getRandInt(MIN_OF_COMMENTS, MAX_OF_COMMENTS)}, () => createComment())
 });
 
-const arrOfPhotoDescriptions = () =>  Array.from({length: MAX_OF_PHOTOS}, createPhotoDescription);
+const arrOfPhotoDescriptions = () =>  Array.from({length: MAX_OF_PHOTOS}, () => createPhotoDescription());
 
 export {arrOfPhotoDescriptions};

@@ -7,14 +7,6 @@ const getRandInt = (a, b) => {
 
 const getRandArrElem = (elements) => elements[getRandInt(0, elements.length - 1)];
 
-const getId = () => {
-  let lastGeneratedId = 0;
-  return function () {
-    lastGeneratedId += 1;
-    return lastGeneratedId;
-  };
-};
+const EscKeyCheck = (evt) => evt.key === 'Escape';
 
-const EscKeyCheck = (event) => event.key === 'Escape';
-
-export {getRandInt, getRandArrElem, getId, EscKeyCheck};
+export {getRandInt, getRandArrElem, EscKeyCheck};
