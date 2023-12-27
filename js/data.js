@@ -9,6 +9,8 @@ const LOWER_BOUND_IMG = 1;
 const MIN_OF_COMMENTS = 0;
 const MAX_OF_COMMENTS = 30;
 const MAX_OF_PHOTOS = 25;
+const MAX_SYMBOLS_COMMENT_LENGTH = 140;
+const MAX_HASHTAGS_COUNT = 5;
 
 const MESSAGES = [
   'Всё отлично!',
@@ -55,4 +57,4 @@ const createPhotoDescription = () => ({
 
 const arrOfPhotoDescriptions = () =>  Array.from({length: MAX_OF_PHOTOS}, () => createPhotoDescription());
 
-export {arrOfPhotoDescriptions};
+export {arrOfPhotoDescriptions, MAX_HASHTAGS_COUNT, MAX_SYMBOLS_COMMENT_LENGTH};
