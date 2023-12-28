@@ -9,12 +9,15 @@ const pictureOverlay = form.querySelector('.img-upload__overlay');
 const commentField = form.querySelector('.text__description');
 const hashtagsField = form.querySelector('.text__hashtags');
 
-const closeOverlay =() => {
+const closeOverlay = () => {
   body.classList.remove('modal-open');
   pictureOverlay.classList.add('hidden');
   closeButton.removeEventListener('click', closeOverlay);
   document.removeEventListener('keydown', closeByEscape);
   pictureUploadInput.value = '';
+  commentField.value = '';
+  hashtagsField.value = '';
+
 };
 
 //function использована чтобы эта и closeOverlay функции не закольцовывались
