@@ -32,6 +32,7 @@ const closeFullScreenPicture = () => {
   body.classList.remove('modal-open');
   fullScreenPicture.classList.add('hidden');
   document.removeEventListener('keydown', closeByEscape);
+  closeButton.removeEventListener('click', closeFullScreenPicture);
 };
 
 //function использована чтобы эта и closeFullScreenPicture функции не закольцовывались
